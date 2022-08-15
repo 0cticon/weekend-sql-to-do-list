@@ -2,12 +2,13 @@ console.log('js sourced');
 $(readyNow);
 
 function readyNow() {
-    // $('#add-button').on('click', addTask);
+    $('#add-button').on('click', addTask);
     getTasks();
     console.log('jqrn');
 
 }
 
+// request current info from database
 function getTasks() {
     console.log('before AJAX');
     $.ajax({
@@ -19,12 +20,16 @@ function getTasks() {
         for (let i = 0; i < response.length; i++) {
             let tasks = response[i];
             $('#list').append(`
-            <tr>
-                <td></td>        
-                <td></td>        
-                <td></td>        
+                 
+            <tc>    
+                <td>${tasks.task}</td>
+                <button class="toggle">Uncompleted</button>
+                <button class="remove">Remove Task</button>
+            </tc>       
+            
 
-            </tr>
+
+            
             
             `);
         }
