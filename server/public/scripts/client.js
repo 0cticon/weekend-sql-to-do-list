@@ -15,18 +15,21 @@ function getTasks() {
         url: '/tasks'
     }).then(function (response) {
         console.log(response);
-    //     $('#list').empty();
-    //     for (let i = 0; i < response.length; i++) {
-    //         let tasks = response[i];
-    //         $('#list').append(`
-    //         <tr>
-    //             <td></td>        
-    //             <td></td>        
-    //             <td></td>        
+        $('#list').empty();
+        for (let i = 0; i < response.length; i++) {
+            let tasks = response[i];
+            $('#list').append(`
+            <tr>
+                <td></td>        
+                <td></td>        
+                <td></td>        
 
-    //         </tr>
+            </tr>
             
-    //         `)
-    //     }
-    })
+            `);
+        }
+    }).catch(function (error) {
+        console.log(error);
+        alert('Something went wrong!');
+    });
 }
