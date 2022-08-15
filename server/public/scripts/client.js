@@ -9,6 +9,7 @@ function readyNow() {
 }
 
 // request current info from database
+
 function getTasks() {
     console.log('before AJAX');
     $.ajax({
@@ -26,13 +27,26 @@ function getTasks() {
                 <button class="toggle">Uncompleted</button>
                 <button class="remove">Remove Task</button>
             </tc>       
-            
-
-
-            
-            
             `);
         }
+    }).catch(function (error) {
+        console.log(error);
+        alert('Something went wrong!');
+    });
+}
+
+//POST new tasks to sql before returning the new data with getTasks, and clear the input field
+
+function addTask() {
+    $.ajax({
+        type: 'POST',
+        url: '/tasks',
+        data: {
+            task: $('#new-task').val()
+        }
+    }).then(function (response) {
+        getTasks();
+        $('#new-tasks').val('');
     }).catch(function (error) {
         console.log(error);
         alert('Something went wrong!');
