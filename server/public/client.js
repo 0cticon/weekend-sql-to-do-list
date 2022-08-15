@@ -1,5 +1,0 @@
-$(onReady);
-
-function onReady() {
-    
-}
