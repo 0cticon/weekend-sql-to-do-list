@@ -33,10 +33,10 @@ router.post('/', (req, res) => {
 
 // DELETE route using router to remove items from database
 // '/:x' must match [req.params.x]
-// WHERE "z" must match data-id=${table.z}
-router.delete('/:n', (req, res) => {
+// WHERE "z" must match button data-id=${table.z}
+router.delete('/:cheeseburger', (req, res) => {
     const queryText = 'DELETE FROM "tasks" WHERE "task" = $1;'
-    pool.query(queryText, [req.params.n]).then((results) => {
+    pool.query(queryText, [req.params.cheeseburger]).then((results) => {
         res.send(200);
     }).catch((error) => {
         console.log(error);

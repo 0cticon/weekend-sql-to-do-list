@@ -4,7 +4,9 @@ $(readyNow);
 function readyNow() {
     $('#add-button').on('click', addTask);
     $('body').on('click', '.remove', removeTask);
+    $('body').on('click', '.toggle', toggleComplete);
     getTasks();
+    
     // console.log('jqrn');
 
 }

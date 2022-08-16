@@ -20,11 +20,11 @@
 
 ### DELETE
 
-- [ ] Click handler for delete
-- [ ] client side AJAX for DELETE
-- [ ] DELETE route on router
-- [ ] DELETE FROM the database
-- [ ] Refresh data on success
+- [x] Click handler for delete
+- [x] client side AJAX for DELETE
+- [x] DELETE route on router
+- [x] DELETE FROM the database
+- [x] Refresh data on success
 
 ### PUT
 
@@ -32,4 +32,4 @@
 - [ ] function to toggle uncompleted to completed(or checkmark)
 - [ ] change button(or container) background color from grey to green
 - [ ] clicking the un/complete button should also change the value in the database
-- [ ] make sure that delete button removes the item from the DOM as well as database
+- [x] make sure that delete button removes the item from the DOM as well as database
