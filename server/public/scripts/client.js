@@ -27,7 +27,7 @@ function getTasks() {
                 <tc>
                     <tr>    
                         <td>${tasks.task}</td>
-                        <button id="toggle" data-id="${tasks.completed}">Uncompleted</button>
+                        <button id="toggle" data-id="${tasks.id}">Uncompleted</button>
                         <button class="remove" 
                         data-id="${tasks.task}">Remove Task</button>
                     </tr>
@@ -89,7 +89,7 @@ function toggleComplete() {
         type: 'PUT',
         url: `/tasks/${completedStatus}`
     }).then(function(response) {
-        // $(this).toggle('value', 'Done!'); //.prop?
+        // $(this).prop('lable', 'Done!'); //.prop?
         getTasks();
     }).catch(function(error) {
         console.log(error);
