@@ -21,11 +21,14 @@ function getTasks() {
         for (let i = 0; i < response.length; i++) {
             let tasks = response[i];
             $('#list').append(`
-                 
-            <tc>    
-                <td>${tasks.task}</td>
-                <button class="toggle">Uncompleted</button>
-                <button class="remove">Remove Task</button>
+            <tc>
+                <div>
+                <tr>    
+                    <td>${tasks.task}</td>
+                    <button class="toggle">Uncompleted</button>
+                    <button class="remove">Remove Task</button>
+                </tr>
+                </div>
             </tc>       
             `);
         }
@@ -42,11 +45,13 @@ function addTask() {
         type: 'POST',
         url: '/tasks',
         data: {
-            task: $('#new-task').val()
+            // id: $('').val(),
+            task: $('#new-task').val(),
+            // completed: $('').val(),
         }
     }).then(function (response) {
         getTasks();
-        $('#new-tasks').val('');
+        // $('#new-tasks').val('');
     }).catch(function (error) {
         console.log(error);
         alert('Something went wrong!');

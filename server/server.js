@@ -10,7 +10,6 @@ app.use(express.static('server/public'));
 app.use(express.urlencoded({ extended: true}));
 
 const tasksRouter = require('./routes/tasks.router.js');
-
 app.use('/tasks', tasksRouter);
 
 // changed to app.use for tasksRouter
