@@ -51,7 +51,7 @@ function addTask() {
         }
     }).then(function (response) {
         getTasks();
-        // $('#new-tasks').val('');
+        $('#new-task').val('');
     }).catch(function (error) {
         console.log(error);
         alert('Something went wrong!');
