@@ -4,7 +4,7 @@ $(readyNow);
 function readyNow() {
     $('#add-button').on('click', addTask);
     $('body').on('click', '.remove', removeTask);
-    $('body').on('click', '.toggle', toggleComplete);
+    $('body').on('click', '#toggle', toggleComplete);
     getTasks();
     
     // console.log('jqrn');
@@ -27,7 +27,7 @@ function getTasks() {
                 <tc>
                     <tr>    
                         <td>${tasks.task}</td>
-                        <button class="toggle">Uncompleted</button>
+                        <button id="toggle" data-id="${tasks.completed}">Uncompleted</button>
                         <button class="remove" 
                         data-id="${tasks.task}">Remove Task</button>
                     </tr>
@@ -76,4 +76,24 @@ function removeTask() {
         console.log(error);
         alert('Something went wrong!');
     });
+}
+
+// PUT new value for uncomplete status
+
+function toggleComplete() {
+    
+    console.log('in toggle');
+    
+    const completedStatus = $(this).data('id');
+    $.ajax({
+        type: 'PUT',
+        url: `/tasks/${completedStatus}`
+    }).then(function(response) {
+        // $(this).toggle('value', 'Done!'); //.prop?
+        getTasks();
+    }).catch(function(error) {
+        console.log(error);
+        alert('Something went wrong!');
+    })
+
 }

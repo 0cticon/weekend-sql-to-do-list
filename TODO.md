@@ -28,7 +28,7 @@
 
 ### PUT
 
-- [ ] Click handler for uncompleted button
+- [x] Click handler for uncompleted button
 - [ ] function to toggle uncompleted to completed(or checkmark)
 - [ ] change button(or container) background color from grey to green
 - [ ] clicking the un/complete button should also change the value in the database

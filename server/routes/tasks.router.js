@@ -44,4 +44,18 @@ router.delete('/:cheeseburger', (req, res) => {
     })
 });
 
+// PUT route to modify data on DOM/database
+router.put('/:x', (req, res) => {
+    const completedStatus = req.params.x;
+    console.log(req.body);
+    const queryText = `UPDATE "tasks"  
+                        SET "completed" = true WHERE "completed" = $1;`;
+    pool.query(queryText, [completedStatus])
+        .then((results) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            res.sendStatus(500);
+        })
+});
+
 module.exports = router;
