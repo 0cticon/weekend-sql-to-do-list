@@ -6,20 +6,30 @@
 ### read
 - [x] GET route on server (router optional)
 - [x] ready now function
-- [ ] Client side AJAX for GET
-- [ ] display data on DOM
+- [x] Client side AJAX for GET
+- [x] display data on DOM
 
 ### create
 
-- [ ] HTML form to collect data
-- [ ] values from an input on click
-- [ ] client side AJAX for POST
-- [ ] POST route on server
-- [ ] INSERT INTO the database
-- [ ] Refresh data on success
+- [x] HTML form to collect data
+- [x] values from an input on click
+- [x] client side AJAX for POST
+- [x] POST route on router
+- [x] INSERT INTO the database
+- [x] Refresh data on success
 
 ### DELETE
 
-...
+- [ ] Click handler for delete
+- [ ] client side AJAX for DELETE
+- [ ] DELETE route on router
+- [ ] DELETE FROM the database
+- [ ] Refresh data on success
 
 ### PUT
+
+- [ ] Click handler for uncompleted button
+- [ ] function to toggle uncompleted to completed(or checkmark)
+- [ ] change button(or container) background color from grey to green
+- [ ] clicking the un/complete button should also change the value in the database
+- [ ] make sure that delete button removes the item from the DOM as well as database
