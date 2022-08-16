@@ -1,9 +1,8 @@
-CREATE TABLE list(
+CREATE TABLE tasks(
     "id" SERIAL PRIMARY KEY,
     "task" varchar(256),
     "completed" boolean DEFAULT false
 );
-INSERT INTO list( task ) VALUES ( 'Wash the car' );
-SELECT * FROM list;
-UPDATE list SET completed=true WHERE id=1;
-DELETE FROM list WHERE id=1;
+INSERT INTO tasks( task ) VALUES ( 'Wash the car' );
+SELECT * FROM tasks ORDER BY id ASC;
+UPDATE tasks SET completed=true WHERE id=1;

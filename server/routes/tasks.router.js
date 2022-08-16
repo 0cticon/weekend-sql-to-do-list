@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
 // '/:x' must match [req.params.x]
 // WHERE "z" must match button data-id=${table.z}
 router.delete('/:cheeseburger', (req, res) => {
-    const queryText = 'DELETE FROM "tasks" WHERE "task" = $1;'
+    const queryText = 'DELETE FROM "tasks" WHERE "id" = $1;'
     pool.query(queryText, [req.params.cheeseburger]).then((results) => {
         res.send(200);
     }).catch((error) => {

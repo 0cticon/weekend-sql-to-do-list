@@ -29,7 +29,7 @@ function getTasks() {
                         <td>${tasks.task}</td>
                         <button id="toggle" data-id="${tasks.id}">Uncompleted</button>
                         <button class="remove" 
-                        data-id="${tasks.task}">Remove Task</button>
+                        data-id="${tasks.id}">Remove Task</button>
                     </tr>
                 </tc>
             </div>       
