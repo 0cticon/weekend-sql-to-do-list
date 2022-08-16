@@ -2,16 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js')
 
-// const taskListArray = [
-//     {
-//         id: 1,
-//         task: 'wash dishes',
-//         completed: 'false',
-        
-//     },
-// ];
-
-
 // GET route using router to retrieve object data from sql
 router.get('/', (req, res) => {
     console.log('in GET /tasks');
@@ -41,5 +31,17 @@ router.post('/', (req, res) => {
         });
 });
 
+// DELETE route using router to remove items from database
+// '/:x' must match [req.params.x]
+// WHERE "z" must match data-id=${table.z}
+router.delete('/:n', (req, res) => {
+    const queryText = 'DELETE FROM "tasks" WHERE "task" = $1;'
+    pool.query(queryText, [req.params.n]).then((results) => {
+        res.send(200);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+});
 
 module.exports = router;

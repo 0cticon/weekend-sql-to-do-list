@@ -1,17 +1,17 @@
-console.log('js sourced');
+// console.log('js sourced');
 $(readyNow);
 
 function readyNow() {
     $('#add-button').on('click', addTask);
+    $('body').on('click', '.remove', removeTask);
     getTasks();
-    console.log('jqrn');
+    // console.log('jqrn');
 
 }
 
-// request current info from database
-
+// GET request current info from database
 function getTasks() {
-    console.log('before AJAX');
+    // console.log('before AJAX');
     $.ajax({
         type: 'GET',
         url: '/tasks'
@@ -21,15 +21,16 @@ function getTasks() {
         for (let i = 0; i < response.length; i++) {
             let tasks = response[i];
             $('#list').append(`
-            <tc>
-                <div>
-                <tr>    
-                    <td>${tasks.task}</td>
-                    <button class="toggle">Uncompleted</button>
-                    <button class="remove">Remove Task</button>
-                </tr>
-                </div>
-            </tc>       
+            <div>
+                <tc>
+                    <tr>    
+                        <td>${tasks.task}</td>
+                        <button class="toggle">Uncompleted</button>
+                        <button class="remove" 
+                        data-id="${tasks.task}">Remove Task</button>
+                    </tr>
+                </tc>
+            </div>       
             `);
         }
     }).catch(function (error) {
@@ -39,7 +40,6 @@ function getTasks() {
 }
 
 //POST new tasks to sql before returning the new data with getTasks, and clear the input field
-
 function addTask() {
     $.ajax({
         type: 'POST',
@@ -53,6 +53,24 @@ function addTask() {
         getTasks();
         $('#new-task').val('');
     }).catch(function (error) {
+        console.log(error);
+        alert('Something went wrong!');
+    });
+}
+
+// DELETE tasks from database and resend updated info to DOM
+// .data('id') refers to data-id for remove button
+function removeTask() {
+    // console.log('in rt');
+    const taskId = $(this).data('id');
+    console.log('removed task:', taskId);
+    $.ajax({
+        type: 'DELETE',
+        url: `/tasks/${taskId}` 
+    }).then(function(response) {
+        //after delete re GET all tasks
+        getTasks();
+    }).catch(function(error) {
         console.log(error);
         alert('Something went wrong!');
     });
