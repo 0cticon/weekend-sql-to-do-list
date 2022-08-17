@@ -5,7 +5,7 @@ const pool = require('../modules/pool.js')
 // GET route using router to retrieve object data from sql
 router.get('/', (req, res) => {
     console.log('in GET /tasks');
-    const queryText = 'SELECT * FROM "tasks";';
+    const queryText = 'SELECT * FROM "tasks" ORDER BY "id";'
     pool.query(queryText).then((result) => {
         console.log('SELECT SUCCESS!', result);
         res.send(result.rows);
@@ -34,9 +34,9 @@ router.post('/', (req, res) => {
 // DELETE route using router to remove items from database
 // '/:x' must match [req.params.x]
 // WHERE "z" must match button data-id=${table.z}
-router.delete('/:cheeseburger', (req, res) => {
+router.delete('/:id', (req, res) => {
     const queryText = 'DELETE FROM "tasks" WHERE "id" = $1;'
-    pool.query(queryText, [req.params.cheeseburger]).then((results) => {
+    pool.query(queryText, [req.params.id]).then((results) => {
         res.send(200);
     }).catch((error) => {
         console.log(error);
@@ -45,11 +45,12 @@ router.delete('/:cheeseburger', (req, res) => {
 });
 
 // PUT route to modify data on DOM/database
-router.put('/:x', (req, res) => {
-    const completedStatus = req.params.x;
+router.put('/:id', (req, res) => {
+    const completedStatus = req.params.id;
     console.log(req.body);
-    const queryText = `UPDATE "tasks"  
-                        SET "completed" = true WHERE "id" = $1;`;
+    const queryText = `UPDATE "tasks"
+                        SET "completed" = true
+                        WHERE "id" = $1;`;
     pool.query(queryText, [completedStatus])
         .then((results) => {
             res.sendStatus(200);

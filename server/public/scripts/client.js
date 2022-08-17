@@ -81,7 +81,6 @@ function removeTask() {
 // PUT new value for uncomplete status
 
 function toggleComplete() {
-    
     console.log('in toggle');
     
     const completedStatus = $(this).data('id');
