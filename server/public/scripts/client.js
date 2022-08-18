@@ -22,17 +22,19 @@ function getTasks() {
         $('#list').empty();
         for (let i = 0; i < response.length; i++) {
             let tasks = response[i];
+            // this is where condition to determain class
             $('#list').append(`
-            <div>
-                <tc>
-                    <tr>    
+            
+                <tr>
                         <td>${tasks.task}</td>
-                        <button id="toggle" data-id="${tasks.id}">Uncompleted</button>
-                        <button class="remove" 
-                        data-id="${tasks.id}">Remove Task</button>
+                        
+                        <td><button id="toggle" data-id="${tasks.id}">Uncompleted</button></td>
+                        
+                        <td><button class="remove" 
+                        data-id="${tasks.id}">Remove Task</button></td>
                     </tr>
-                </tc>
-            </div>       
+                
+                  
             `);
         }
     }).catch(function (error) {
@@ -82,6 +84,14 @@ function removeTask() {
 
 function toggleComplete() {
     console.log('in toggle');
+
+    
+
+
+
+
+
+
     
     const completedStatus = $(this).data('id');
     $.ajax({
@@ -90,6 +100,9 @@ function toggleComplete() {
     }).then(function(response) {
         // $(this).prop('lable', 'Done!'); //.prop?
         getTasks();
+       
+        // $('#toggle').replaceWith( "<button>Done!</button>");
+
     }).catch(function(error) {
         console.log(error);
         alert('Something went wrong!');

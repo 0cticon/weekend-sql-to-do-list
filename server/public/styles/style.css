@@ -1,0 +1,61 @@
+.content {
+    text-align: center;
+
+
+
+}
+
+h1 {
+    color: rgb(233, 6, 6);
+    background-color: rgb(7, 110, 214);
+    text-align: center;
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#list {
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    /* border-radius: 5px; */
+    background-color: #96D4D4;
+}
+
+#list {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px, solid;
+    border-collapse: collapse;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+button {
+    border-radius: 5px;
+}
+
+#user-input {
+    margin-bottom: 10px;
+}
+
+body {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
