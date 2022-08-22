@@ -23,9 +23,9 @@ function getTasks() {
         for (let i = 0; i < response.length; i++) {
             let tasks = response[i];
             // this is where condition to determain class
-            $('#list').append(`
-            
-                <tr>
+            if (tasks.completed === false) { // <- use the completed property to decide what to append
+                $('#list').append(`
+                    <tr>
                         <td>${tasks.task}</td>
                         
                         <td><button id="toggle" data-id="${tasks.id}">Uncompleted</button></td>
@@ -33,16 +33,25 @@ function getTasks() {
                         <td><button class="remove" 
                         data-id="${tasks.id}">Remove Task</button></td>
                     </tr>
-                
-                  
-            `);
+                `);
+             } else if(tasks.completed === true) {
+                $('#list').append(`
+                    <tr>
+                        <td>${tasks.task}</td>
+                        
+                        <td><button id="toggle" data-id="${tasks.id}">Done!</button></td>
+                        
+                        <td><button class="remove" 
+                        data-id="${tasks.id}">Remove Task</button></td>
+                    </tr>
+                `);
+            }
         }
     }).catch(function (error) {
         console.log(error);
         alert('Something went wrong!');
     });
 }
-
 //POST new tasks to sql before returning the new data with getTasks, and clear the input field
 function addTask() {
     $.ajax({
